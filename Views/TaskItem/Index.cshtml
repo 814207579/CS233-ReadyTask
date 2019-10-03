@@ -1,0 +1,13 @@
+﻿@model List<TaskItem>
+
+
+    <ul>
+        @foreach (TaskItem task in Model) {
+        <li>
+            <div>@task.Title</div>
+            @if (task.AssignedUser != null) {
+                <div>@task.AssignedUser.FirstName</div>
+            }
+        </li>
+        }
+    </ul>
