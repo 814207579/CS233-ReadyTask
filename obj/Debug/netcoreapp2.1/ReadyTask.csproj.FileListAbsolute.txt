@@ -40,3 +40,4 @@ C:\Users\Macbook\source\repos\CS233\ReadyTask\obj\Debug\netcoreapp2.1\Razor\Area
 C:\Users\Macbook\source\repos\CS233\ReadyTask\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\Macbook\source\repos\CS233\ReadyTask\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 C:\Users\Macbook\source\repos\CS233\ReadyTask\obj\Debug\netcoreapp2.1\Razor\Views\TaskItem\Index.g.cshtml.cs
+C:\Users\Macbook\source\repos\CS233\ReadyTask\obj\Debug\netcoreapp2.1\Razor\Views\TaskItem\Details.g.cshtml.cs

@@ -25,10 +25,19 @@ namespace ReadyTask.Controllers
         }
 
         // GET: TaskItem/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null) {
+                return NotFound();
+            }
             TaskItem task = _context.TaskItems.FirstOrDefault(t => t.Id == id);
-            return View();
+
+            if (task == null) {
+                return NotFound();
+            }
+
+            return View(task);
+
         }
 
         // GET: TaskItem/Create
