@@ -13,6 +13,7 @@ namespace ReadyTask.Controllers
     public class TaskItemController : Controller
     {
         private readonly ApplicationDbContext _context;
+
         public TaskItemController(ApplicationDbContext context) {
             _context = context;
         }
@@ -44,6 +45,19 @@ namespace ReadyTask.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind("Id, Title, Description")] Task task)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(task);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(task));
+            }
+            return View(task);
         }
 
         // POST: TaskItem/Create

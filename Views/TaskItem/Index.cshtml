@@ -4,10 +4,13 @@
     <ul>
         @foreach (TaskItem task in Model) {
         <li>
-            <div>@task.Title</div>
-            @if (task.AssignedUser != null) {
+            <div>
+                <a asp-action="Details" asp-route-id="@task.Id">@task.Title</a>
+            </div>
+            @*<div>@task.Title</div>*@
+            @*@if (task.AssignedUser != null) {
                 <div>@task.AssignedUser.FirstName</div>
-            }
+            }*@
         </li>
         }
     </ul>
