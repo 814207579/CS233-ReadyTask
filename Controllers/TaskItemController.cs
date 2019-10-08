@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ReadyTask.Data;
 using ReadyTask.Models;
+using ReadyTask.ViewModels;
 
 namespace ReadyTask.Controllers
 {
@@ -44,37 +45,21 @@ namespace ReadyTask.Controllers
         // GET: TaskItem/Create
         public ActionResult Create()
         {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("Id, Title, Description")] Task task)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(task);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(task));
-            }
-            return View(task);
+            TaskItemCreate viewModel = new TaskItemCreate();
+            viewModel.readyTaskUsers = _context.Users.ToList();
+            return View(viewModel);
         }
 
         // POST: TaskItem/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
+        public ActionResult Create([Bind("Id, Title, Description, AssignedUserId")] TaskItem task) {
+            if (ModelState.IsValid) {
+                _context.Add(task);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(task);
         }
 
         // GET: TaskItem/Edit/5

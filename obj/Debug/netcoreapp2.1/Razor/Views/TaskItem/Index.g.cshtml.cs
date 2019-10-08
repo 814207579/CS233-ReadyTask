@@ -62,7 +62,7 @@ using ReadyTask.Models;
             WriteLiteral("        <li>\r\n            <div>\r\n                ");
             EndContext();
             BeginContext(131, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "399ebc39d1db46fd9e905564e7e99034", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aecb9ab204e349b88e3d2c951be2fba5", async() => {
                 BeginContext(180, 10, false);
 #line 8 "C:\Users\Macbook\source\repos\CS233\ReadyTask\Views\TaskItem\Index.cshtml"
                                                            Write(task.Title);
