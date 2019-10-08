@@ -90,6 +90,7 @@ namespace ReadyTask.Controllers
         // GET: TaskItem/Delete/5
         public ActionResult Delete(int id)
         {
+            //don't need to return a view, just redirect
             return View();
         }
 
