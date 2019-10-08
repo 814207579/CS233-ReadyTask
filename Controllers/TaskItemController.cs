@@ -32,8 +32,7 @@ namespace ReadyTask.Controllers
             if (id == null) {
                 return NotFound();
             }
-            TaskItem task = _context.TaskItems.FirstOrDefault(t => t.Id == id);
-
+            TaskItem task = _context.TaskItems.Include(t => t.AssignedUser).FirstOrDefault(t => t.Id == id);
             if (task == null) {
                 return NotFound();
             }
@@ -65,24 +64,27 @@ namespace ReadyTask.Controllers
         // GET: TaskItem/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            TaskItemCreate viewModel = new TaskItemCreate();
+            viewModel.readyTaskUsers = _context.Users.ToList();
+            viewModel.TaskItem = _context.TaskItems.Find(id);
+            return View(viewModel);
         }
 
         // POST: TaskItem/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit([Bind("Id, Title, Description, AssignedUserId")] TaskItem task)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
+                _context.Update(task);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            TaskItemCreate viewModel = new TaskItemCreate();
+            viewModel.TaskItem = task;
+            viewModel.readyTaskUsers = _context.Users.ToList();
+            return View(viewModel);
         }
 
         // GET: TaskItem/Delete/5

@@ -3,12 +3,12 @@
 
 @{
 
-    <h2>Create</h2>
+    <h2>Edit</h2>
 
-    <form asp-action="Create">
+    <form asp-action="Edit">
         <div class="form-group">
             <label asp-for="TaskItem.Title" class="control-label"></label>
-            <input asp-for="TaskItem.Title" name="Title"class="form-control" />
+            <input asp-for="TaskItem.Title" name="Title" class="form-control" />
         </div>
         <div class="form-group">
             <label asp-for="TaskItem.Description" class="control-label"></label>
@@ -16,18 +16,24 @@
         </div>
         <div class="form-group">
             <label class="control-label" Assigned User></label>
-            @*@Html.DropDownListFor(u => u.TaskItem.AssignedUserId,
-                new SelectList(Model.readyTaskUsers, "Id", "FirstName"))*@
             <select class="form-control" asp-for="TaskItem.AssignedUserId" name="AssignedUserId">
+
                 <option value="">None</option>
                 @foreach (ReadyTaskUser user in Model.readyTaskUsers)
                 {
-                    <option value="@(user.Id)"> @user.FirstName @user.LastName </option>
+                    if (Model.TaskItem.AssignedUserId == user.Id)
+                    {
+                        <option Selected value="@(user.Id)"> @user.FirstName @user.LastName </option>
+                    }
+                    else
+                    {
+                        <option value="@(user.Id)"> @user.FirstName @user.LastName </option>
+                    }
                 }
             </select>
         </div>
         <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Edit" class="btn btn-default" />
         </div>
     </form>
 }

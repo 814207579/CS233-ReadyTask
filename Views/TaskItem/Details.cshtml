@@ -4,8 +4,10 @@
     <div>
         <h2>@Html.DisplayFor(model => model.Title)</h2>
         <p>@Html.DisplayFor(model => model.Description)</p>
+        <p>@Html.DisplayFor(model => model.AssignedUser.FirstName) @Html.DisplayFor(model => model.AssignedUser.LastName)</p>
     </div>
 
     <div>
         <a asp-action="Index">Back to List of Tasts</a>
     </div>
+<a class="btn btn-default" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
