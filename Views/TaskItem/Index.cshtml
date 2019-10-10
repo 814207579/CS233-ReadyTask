@@ -1,6 +1,7 @@
 ﻿@model List<TaskItem>
 
 
+<h2>Tasks</h2>
     <ul>
         @foreach (TaskItem task in Model) {
         <li>
@@ -14,3 +15,6 @@
         </li>
         }
     </ul>
+    <div>
+        <a class="btn btn-default" asp-action="Create" asp-route-id="@Task.CurrentId">Create New Task</a>
+    </div>

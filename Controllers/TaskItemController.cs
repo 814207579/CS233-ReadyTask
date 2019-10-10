@@ -91,7 +91,10 @@ namespace ReadyTask.Controllers
         public ActionResult Delete(int id)
         {
             //don't need to return a view, just redirect
-            return View();
+            var task = _context.TaskItems.Find(id);
+            _context.Remove(task);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: TaskItem/Delete/5
